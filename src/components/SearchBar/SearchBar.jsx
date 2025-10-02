@@ -1,13 +1,16 @@
-export const SearchBar = ({ topic, level, onChangeTopic, onChangeLevel }) => {
+export const SearchBar = ({ filters: { topic, level }, onChange }) => {
   return (
     <div>
       <input
         type="text"
         value={topic}
         placeholder="Filter by topic..."
-        onChange={evt => onChangeTopic(evt.target.value)}
+        onChange={evt => onChange('topic', evt.target.value)}
       ></input>
-      <select value={level} onChange={evt => onChangeLevel(evt.target.value)}>
+      <select
+        value={level}
+        onChange={evt => onChange('level', evt.target.value)}
+      >
         <option value="all">All</option>
         <option value="beginner">Beginner</option>
         <option value="intermediate">Intermediate</option>
